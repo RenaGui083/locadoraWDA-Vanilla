@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+    background-color: #121F2F;
+    font-family: 'Raleway', sans-serif;
+}
+
+.container{
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100vh;    
+}
+
+.main{
+    width: 150vh;
+    height: 80vh;
+    background-color: #2B324E;
+    border-radius: 25px;
+    display: flex;
+}
+
+.login{
+    height: 100%;
+    width: 50%;
+    padding: 2%;
+    color: white;
+}
+.login h1{
+    font-weight: bold;
+}
+.imagem{
+    background-image: url(../img/background2.jpg);
+    height: 100%;
+    width: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;     
+    background-position: center; 
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding: 2%;
+    display: flex;
+    /* justify-content: flex-end; */
+}
+
+#logo{
+    height: 15%;
+}
+#logoLocadora{
+    height: 12vh;
+}
+
+.logoSection{
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    color: white;
+}
+.logo{
+    display: none;
+}
+.form{
+    width: 100%;
+    height: auto;
+    padding-left: 3%;
+    padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.form h1{
+    color: #F7B176;
+}
+.form p{
+    color: #b2b5cf;
+}
+.formGroup{
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.formInput{
+    width: 90%;
+    padding: 26px 24px 14px 25px;
+    border: none;
+    /* border-radius: 10px; */
+    background-color: #404668;
+    color: white;
+    font-size: 105%;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.formInput:focus{
+    box-shadow: inset 6px 0 0 #F7B176;
+}
+
+.formLabel{
+    position: absolute;
+    top: 18px;
+    left: 16px;
+    color:  #b2b5cf;
+    pointer-events: none;
+    font-size: 1rem;
+    transition: 0.2s ease all;
+}
+
+.formInput:focus + .formLabel,
+.formInput:not(:placeholder-shown) + .formLabel {
+    top: 6px;
+    font-size: 0.75rem;
+    color:  #b2b5cf;
+}
+
+input::placeholder{
+    color: transparent;
+}
+
+.botao{
+    width: 22vh;
+    height: 6vh;
+    border: none;
+    border-radius: 5px;
+    font-size: large;
+    background-color: #F7B176;
+    color: #2B324E;
+    font-weight: bold;
+    /* box-shadow: 1px 1px 1px 1px #fbdc98; */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botao:hover,
+.botao:focus {
+  box-shadow: 0 0 12px 4px rgba(247, 177, 118, 0.5);
+  transform: translateY(-2px);
+}
+
+.formInput:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #404668 inset !important;
+  -webkit-text-fill-color: white !important;
+  border-left: 6px solid #F7B176 !important;
+}
+
+
+@media (max-width: 768px) {
+    html, body{
+    overflow-x: hidden;
+    overflow-y: hidden;
+   }
+   .container{
+    padding: 4%;
+   }
+   /* .main{
+    flex-direction:  initial;
+   } */
+   .login{
+    width: 100%;
+   }
+   .imagem{
+    display: none;
+   }
+   .logo{
+    display: block;
+    height: 8%;
+    margin: auto;
+   }
+
+}

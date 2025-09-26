@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="icon" href="../img/faviIconWDA.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locadora de Livros WDA group</title>
+    <link rel="stylesheet" href="../css/alugueis.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <input type="checkbox" id="check">
+    <label for="check"><i class="fas fa-bars" id="btn"></i><i class="fas fa-times" id="cancel"></i></label>
+    <div class="sidebar">
+        <div class="headerSidebar"> <img src="../img/logoLocadora.png" alt="" id="logoLocadora">
+            <header>Locadora de Livros</header>
+        </div>
+        <ul>
+            <li><a href="../html/dashboard.html"><i class="fas fa-chart-line"></i>Dashboard</a></li>
+            <li><a href="../html/biblioteca.html"><i class="fas fa-book"></i>Biblioteca</a></li>
+            <li><a href="" style="color: #F7B176;"><i class="fas fa-tags"></i>Aluguéis</a></li>
+            <li><a href="../html/usuarios.html"><i class="fas fa-user-tag"></i>Usuários</a></li>
+            <li><a href="../html/locatarios.html"><i class="fas fa-user"></i>Locatários</a></li>
+            <li><a href="../html/editoras.html"><i class="fas fa-building"></i>Editoras</a></li>
+            <li><a href="../index.html" onclick=" logout()"><i class="fas fa-sign-out-alt"></i>Sair</a></li>
+        </ul>
+        <div class="footer" id="rodape"><i class="fas fa-user-shield"></i> </div>
+    </div>
+    <div class="main">
+        <div class="titulo">
+            <h2><i class="fas fa-tags"></i> Aluguéis</h2>
+            <img src="../img/logo - Preta.png" alt="" id="logoWDA">
+        </div>
+
+        <div class="searchBar">
+            <div class="search" id="search">
+                <label for="" class="searchInput">
+                    <i class="fas fa-search"></i>
+                </label>
+                <input type="text" id="searchInput" placeholder="Pesquisar" onkeyup="pesquisarTabela()">
+            </div>
+            <input type="button" value="+ Criar" class="botao" onclick="btnAdicionar()" id="btnAdicionar">
+        </div>
+        <div class="tabela">
+            <div class="tituloTabela">
+                <h3>Relação de Aluguéis</h3>
+            </div>
+            <table border="1" id="tabelaAlugueis">
+                <thead class="cabecalho">
+                    <td>Id</td>
+                    <td class="nome">Livro</td>
+                    <td>Locatário</td>
+                    <td>Data de locação</td>
+                    <td>Data de devolução</td>
+                    <td>Status</td>
+                    <td>Ações</td>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal" id="criar">
+        <div class="conteudoModal">
+            <h1>Cadastro de aluguel</h1>
+
+            <form>
+                <select name="Livro (id)" id="livroId" class="formSelect" required>
+                    <option value="livro" id="optionLivro">Livros:</option>
+                </select>
+                <select name="Locatários (id)" id="locatarioId" class="formSelect" required>
+                     <option value="locatario" id="optionLocatario">Locatários:</option>
+                </select>
+                <!-- <div class="formGroup">
+                    <input type="number" id="livro" class="formInput" placeholder="Livro Id" required />
+                    <label for="Livro" class="formLabel">Livro Id</label>
+                </div>
+
+                <div class="formGroup">
+                    <input type="number" id="locatario" class="formInput" placeholder="Locatário Id" required />
+                    <label for="Locatário" class="formLabel">Locatário Id</label>
+                </div> -->
+                <!-- <div class="formGroup">
+                                    <input type="date" id="dataLocacao" class="formInput" placeholder="Data de locação" required/>
+                                    <label for="Data de locação" class="formLabel">Data de locação</label>
+                                </div> -->
+                <div class="formGroup">
+                    <input type="date" id="dataDevolucao" class="formInput" placeholder="Data de devolução" />
+                    <label for="Data de devolução" class="formLabel" id="dataDevolucaoLabel">Data de devolução</label>
+                </div>
+                <!-- <div class="status">
+                                    <label for="status">Selecionar status:</label>
+                                        <select id="status" name="status">
+                                            <option value="Pendente">Pendente</option>
+                                            <option value="Devolvido com atraso">Devolvido com atraso</option>
+                                            <option value="Devolvido no prazo">Devolvido no prazo</option>
+                                            <option value="Devolvido com avarias">Devolvido com avarias</option>
+                                        </select>
+                                </div> -->
+            </form>
+            <p id="alert"></p>
+            <input type="button" value="Cadastrar" id="cadastro" class="botao" onclick="adicionarDados()">
+            <input type="button" value="Cancelar" id="cancelar" class="botao" onclick="cancelar()">
+        </div>
+    </div>
+
+    <div class="modal" id="editar">
+        <div class="conteudoModal">
+            <h1>Editar cadastro</h1>
+            <!-- "E" no final significa "Editar" ;-; -->
+            <form>
+                <!-- <div class="formGroup">
+                    <input type="number" id="livroE" class="formInput" placeholder="Livro Id" required />
+                    <label for="Livro Id" class="formLabel">Livro Id</label>
+                </div>
+
+                <div class="formGroup">
+                    <input type="number" id="locatarioE" class="formInput" placeholder="Locatário Id" required />
+                    <label for="Locatário Id" class="formLabel">Locatário Id</label>
+                </div> -->
+                <!-- <div class="formGroup">
+                    <input type="date" id="dataLocacaoE" class="formInput" placeholder="Data de locação" required />
+                    <label for="Data de locação" class="formLabel">Data de locação</label>
+                </div> -->
+                <select name="Livro (id)" id="livroIdE" class="formSelect"required>
+                    <option value="livro">Livros:</option>
+                </select>
+                <select name="Locatários (id)" id="locatarioIdE" class="formSelect" required>
+                    <option value="locatario">Locatários:</option>
+                </select>
+                <div class="formGroup">
+                    <input type="date" id="dataDevolucaoE" class="formInput" placeholder="Data de devolução" />
+                    <label for="Data de devolução" class="formLabel">Data de devolução</label>
+                </div>
+            </form>
+            <p id="alert"></p>
+            <input type="button" value="Atualizar" id="editarbtn" class="botao" onclick="abrirModalConfirmarEdicao()">
+            <input type="button" value="Cancelar" id="cancelarEditar" class="botao" onclick="fecharModal()">
+        </div>
+    </div>
+    <div class="modal" id="atualizar">
+        <div class="conteudoModal">
+            <h1>Realizar devolução?</h1>
+            <br>
+            <input type="button" value="Sim" id="excluirbtn" class="botao" onclick="">
+            <input type="button" value="Cancelar" id="cancelarExcluir" class="botao" onclick="fecharModal()">
+        </div>
+    </div>
+    <div class="modal" id="confirmarEdicao">
+        <div class="conteudoModal">
+            <h3>Tem certeza de que deseja editar?</h3>
+            <br>
+            <input type="button" value="Sim" id="confirmarEdicaobtn" class="botao" onclick="confirmarEdicao()">
+            <input type="button" value="Cancelar" id="cancelarEditarConfirm" class="botao" onclick="fecharModal()">
+        </div>
+    </div>
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/aluguelAPI.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="icon" href="../img/faviIconWDA.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locadora de Livros WDA group</title>
+    <link rel="stylesheet" href="../css/biblioteca.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <input type="checkbox" id="check">
+    <label for="check"><i class="fas fa-bars" id="btn"></i><i class="fas fa-times" id="cancel"></i></label>
+    <div class="sidebar">
+        <div class="headerSidebar"> <img src="../img/logoLocadora.png" alt="" id="logoLocadora">
+            <header id="titulo">Locadora de Livros</header>
+        </div>
+        <ul>
+            <li><a href="../html/dashboard.html"><i class="fas fa-chart-line"></i>Dashboard</a></li>
+            <li><a href="" style="color: #F7B176;"><i class="fas fa-book"></i>Biblioteca</a></li>
+            <li><a href="../html/alugueis.html"><i class="fas fa-tags"></i>Aluguéis</a></li>
+            <li><a href="../html/usuarios.html"><i class="fas fa-user-tag"></i>Usuários</a></li>
+            <li><a href="../html/locatarios.html"><i class="fas fa-user"></i>Locatários</a></li>
+            <li><a href="../html/editoras.html"><i class="fas fa-building"></i>Editoras</a></li>
+            <li><a href="../index.html" onclick=" logout()"><i class="fas fa-sign-out-alt"></i>Sair</a></li>
+        </ul>
+        <div class="footer" id="rodape"><i class="fas fa-user-shield"></i> </div>
+    </div>
+    <div class="biblioteca">
+        <div class="titulo">
+            <h2><i class="fas fa-book"></i> Biblioteca</h2>
+            <img src="../img/logo - Preta.png" alt="" id="logoWDA">
+        </div>
+
+        <div class="searchBar">
+            <div class="search" id="search">
+                <label for="" class="searchInput">
+                    <i class="fas fa-search"></i>
+                </label>
+                <input type="text" id="searchInput" placeholder="Pesquisar" onkeyup="pesquisarTabela()">
+            </div>
+            <input type="button" value="+ Criar" class="botao" onclick="btnAdicionar()" id="btnAdicionar">
+        </div>
+        <div class="tabela">
+            <div class="tituloTabela">
+                <h3>Acervo atual</h3>
+            </div>
+            <table border="1" id="tabelaBiblioteca">
+                <thead class="cabecalho">
+                    <td>Id</td>
+                    <td class="nome">Nome</td>
+                    <td>Autor</td>
+                    <td>Data de Lançamento</td>
+                    <td>Estoque</td>
+                    <td>Alugados</td>
+                    <td>Editora</td>
+                    <td>Ações</td>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal" id="criar">
+        <div class="conteudoModal">
+            <h1>Cadastrar Livro</h1>
+
+            <form>
+                <div class="formGroup">
+                    <input type="text" id="nome" class="formInput" placeholder="Nome" required />
+                    <label for="name" class="formLabel">Nome</label>
+                </div>
+                <select name="Editora (id)" id="editoraId" class="formSelect" required>
+
+                </select>
+                    <!-- <div class="formGroup">
+                        <input type="number" id="editoraId" class="formInput" placeholder="Editora (id)" required />
+                        <label for="editora" class="formLabel">Editora (id)</label>
+                    </div> -->
+                    <div class="formGroup">
+                        <input type="text" id="autor" class="formInput" placeholder="Autor" required />
+                        <label for="Autor" class="formLabel">Autor</label>
+                    </div>
+                <div class="forms">
+                    <div class="formGroup">
+                        <input type="date" id="dataLancamento" class="formInput" placeholder="Data de lançamento" required />
+                        <label for="Data de lançamento" class="formLabel">Data de lançamento</label>
+                    </div>
+                    <div class="formGroup">
+                        <input type="number" id="estoque" class="formInput" placeholder="Estoque" required />
+                        <label for="Estoque" class="formLabel">Estoque</label>
+                    </div>
+                </div>
+            </form>
+            <p id="alert"></p>
+            <input type="button" value="Cadastrar" id="cadastroLivro" class="botao" onclick="adicionarDados()">
+            <input type="button" value="Cancelar" id="cancelarLivro" class="botao" onclick="cancelar()">
+        </div>
+    </div>
+
+    <div class="modal" id="editar">
+        <div class="conteudoModal">
+            <h1>Editar cadastro</h1>
+            <!-- "E" no final significa "Editar" ;-; -->
+            <form>
+                <div class="formGroup">
+                    <input type="text" id="nomeE" class="formInput" placeholder="Nome" required />
+                    <label for="name" class="formLabel">Nome</label>
+                </div>
+                <select name="Editora (id)" id="editoraIdE" class="formSelect" required>
+
+                </select>
+                <div class="forms">
+                    <!-- <div class="formGroup">
+                        <input type="number" id="editoraIdE" class="formInput" placeholder="Editora (id)" required />
+                        <label for="editora" class="formLabel">Editora (id)</label>
+                    </div> -->
+                    <div class="formGroup">
+                        <input type="text" id="autorE" class="formInput" placeholder="Autor" required />
+                        <label for="Autor" class="formLabel">Autor</label>
+                    </div>
+                </div>
+                <div class="forms">
+                    <div class="formGroup">
+                        <input type="date" id="dataLancamentoE" class="formInput" placeholder="Data de lançamento"
+                            required />
+                        <label for="Data de lançamento" class="formLabel">Data de lançamento</label>
+                    </div>
+                    <div class="formGroup">
+                        <input type="number" id="estoqueE" class="formInput" placeholder="Estoque" required />
+                        <label for="Estoque" class="formLabel">Estoque</label>
+                    </div>
+                </div>
+
+
+            </form>
+            <p id="alert"></p>
+            <input type="button" value="Atualizar" id="editarLivro" class="botao" onclick="abrirModalConfirmarEdicao()">
+            <input type="button" value="Cancelar" id="cancelarLivroEditar" class="botao" onclick="fecharModal()">
+        </div>
+    </div>
+    <div class="modal" id="excluir">
+        <div class="conteudoModal">
+            <h3>Tem certeza de que deseja excluir?</h3>
+            <br>
+            <input type="button" value="Sim" id="excluirLivro" class="botao" onclick="">
+            <input type="button" value="Cancelar" id="cancelarLivroExcluir" class="botao" onclick="fecharModal()">
+        </div>
+    </div>
+    <div class="modal" id="confirmarEdicao">
+        <div class="conteudoModal">
+            <h3>Tem certeza de que deseja editar?</h3>
+            <br>
+            <input type="button" value="Sim" id="confirmarEdicaobtn" class="botao" onclick="confirmarEdicao()">
+            <input type="button" value="Cancelar" id="cancelarEdiar" class="botao" onclick="fecharModal()">
+        </div>
+    </div>
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/bibliotecaAPI.js"></script>
+</body>
+
+</html>
