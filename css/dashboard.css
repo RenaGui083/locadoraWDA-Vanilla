@@ -1,0 +1,536 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #E0E4EB;
+    overflow: hidden;
+    font-size: 90%;
+}
+
+.sidebar {
+    position: fixed;
+    left: -400px;
+    width: 400px;
+    height: 100%;
+    background-color: #121F2F;
+    transition: all .5s ease;
+}
+
+.sidebar header {
+    font-size:  22px;
+    color: white;
+    text-align: center;
+    line-height: 70px;
+    user-select: none;
+}
+
+.sidebar ul a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    color: white;
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: .4s;
+}
+
+ul li:hover a {
+    padding-left: 50px;
+}
+
+.sidebar ul a i {
+    margin-right: 16px;
+}
+
+#check {
+    display: none;
+}
+
+label #btn,
+label #cancel {
+    position: absolute;
+    cursor: pointer;
+    background: #121F2F;
+    border-radius: 3px;
+}
+
+label #btn {
+    left: 40px;
+    top: 25px;
+    font-size: 35px;
+    color: white;
+    padding: 6px 12px;
+    transition: all .5s;
+}
+
+label #cancel {
+    z-index: 111;
+    left: -350px;
+    top: 26px;
+    font-size: 30px;
+    color: #404668;
+    padding: 4px 9px;
+    transition: all .5s ease;
+}
+
+#check:checked~.sidebar {
+    left: 0;
+}
+
+#check:checked~label #cancel {
+    left: 350px;
+
+}
+
+#logoLocadora {
+    height: 10vh;
+}
+
+.headerSidebar {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 12%;
+    margin-left: 30px;
+    margin-right: 25px;
+    color: white;
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    border: white;
+    border-style: solid;
+    width: auto;
+    height: 40px;
+    border-radius: 8px;
+}
+
+/* Dashboard */
+
+.dashboard {
+    margin-left: 100px;
+    transition: margin-left 0.5s ease;
+    padding-left: 2%;
+    padding-right: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    row-gap: 15px;
+}
+
+.dashboard h1 {
+    color: #121F2F;
+}
+
+#check:checked~.dashboard {
+    margin-left: 400px;
+}
+
+
+.graficoContainer {
+    width: 49%;
+    max-height: 40vh;
+    padding: 1%;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: white;
+        display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+.secaoGrafico1 {
+    display: flex;
+    width: auto;
+    gap: 1%;
+}
+
+.secaoGrafico2 {
+    width: auto;
+    display: flex;
+    gap: 1%;
+}
+
+
+
+.topo {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    font-weight: bold;
+    padding: 4%;
+    gap: 10px;
+}
+
+.topo h3 {
+    text-align: left;
+}
+
+#topoBox {
+    border-bottom: solid 2px;
+
+}
+
+#topoBox2 {
+    border-bottom: solid 2px;
+
+}
+
+.titulo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding-top: 1%;
+}
+
+#logoWDA {
+    margin-left: auto;
+    height: 8vh;
+}
+
+.tabela {
+    width: 70%;
+    height: auto;
+    max-height: 45vh;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: white;
+}
+
+ .sectionDado {
+    width: 30%;
+} 
+
+.boxDado {
+    width: auto;
+    /* min-height: 40vh; */
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: white;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 4%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    width: 36%;
+    padding: 6px;
+}
+
+.cabecalho {
+    background-color: #2B324E;
+    color: white;
+}
+
+table,
+td,
+th {
+    border: none;
+    border-collapse: collapse;
+}
+
+.nome {
+    text-align: left;
+}
+
+tr:hover {
+    background-color: #D9D9D9;
+}
+
+.cabecalho:hover {
+    background-color: #121F2F;
+}
+
+.inputNumber {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    width: 10%;
+    padding: 8px 8px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inputNumber:focus {
+    border-color: #4B6B92;
+    box-shadow: 0 0 4px rgba(75, 107, 146, 0.5);
+    outline: none;
+}
+
+.inputPagina {
+    display: flex;
+    align-items: center;
+    padding: 2%;
+    gap: 5px;
+    font-weight: bold;
+
+}
+
+#paginaAlugueis {
+    align-self: start;
+}
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        overflow: hidden;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+
+    /* Sidebar*/
+    .sidebar {
+        width: 300px;
+        left: 0;
+        transform: translateX(-100%);
+    }
+
+    #logoLocadora {
+        height: 50px;
+    }
+
+    #titulo {
+        font-size: 20px;
+    }
+
+    #check:checked~.sidebar {
+        transform: translateX(0);
+    }
+
+    .headerSidebar {
+        display: flex;
+        align-items: center;
+    }
+    .sidebar header {
+    font-size:  130%;
+    
+}
+
+    .sidebar ul a {
+        font-size: 96%;
+    }
+
+    label #cancel {
+        left: -10px;
+        transform: translateX(-100%);
+    }
+
+    #check:checked~label #cancel {
+        transform: translateX(-225%);
+    }
+
+    #check:checked~.dashboard {
+        margin-left: 0;
+    }
+
+    a label #btn,
+    label #cancel {
+        position: absolute;
+        cursor: pointer;
+        background: #121F2F;
+        border-radius: 3px;
+    }
+
+    label #btn {
+        left: 10px;
+        top: 2%;
+        font-size: 30px;
+        color: white;
+        padding: 1px 6px;
+        transition: all .5s;
+    }
+
+    .footer {
+        width: 80%;
+        font-size: 16px;
+        flex-wrap: wrap;
+    }
+
+
+    /*main*/
+    .dashboard {
+        margin-left: 0;
+        padding-right: 4%;
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .titulo {
+        margin-left: 15%;
+    }
+
+    #logoWDA {
+        margin-left: 20%;
+    }
+
+    .botao {
+        width: 25%;
+        font-size: 16px;
+    }
+
+    .searchBar {
+        gap: 1%;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .tabela {
+        font-size: 70%;
+        overflow-x: auto;
+        width: 102%;
+        height: 20vh;
+        margin-top: 4%;
+    }
+
+    td {
+        padding: 3px;
+        width: 15%;
+    }
+
+    .tabela i {
+        margin: 3px;
+        font-size: 12px;
+    }
+
+    .graficoContainer {
+        width: 100%;
+        max-height: 40vh;
+        padding: 1%;
+        border-radius: 16px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        background-color: white;
+        margin-top: 20px;
+    }
+
+    #graficoPizza {
+        margin: auto;
+        height: 200px !important;
+        width: 300px !important;
+    }
+
+    #graficoPizza2 {
+        margin: auto;
+        height: 6 !important;
+        width: 350px !important;
+    }
+
+    #graficoDonut {
+        margin: auto;
+        /* height: !important; */
+        width: 300px !important;
+    }
+
+    .secaoGrafico1 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 1%;
+    }
+
+    .secaoGrafico2 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3%;
+    }
+
+    .sectionDado {
+        width: 100%;
+    }
+
+    .boxDado {
+        height: 50vh;
+        width: 94%;
+        margin-top: 8%;
+    }
+}
+
+
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.4s forwards, fadeOut 0.4s 2.6s forwards;
+    font-family: 'Raleway', sans-serif;
+}
+
+.toast.success {
+    background-color: #4CAF50;
+}
+
+.toast.error {
+    background-color: #F44336;
+}
+
+.toast.warning {
+    background-color: #FF9800;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
